@@ -10,6 +10,8 @@ using namespace std;
 int main()
 {
 	Repository repo;
+	test();
+	testRepo();
 	Project p1 = Project("blabla/land", 381, 0);
 	repo.addProjectR(p1);
 	cout << p1.toString() << endl;
