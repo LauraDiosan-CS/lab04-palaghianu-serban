@@ -37,6 +37,8 @@ void testRepo()
 	repo.addProjectR(p1);
 	repo.addProjectR(p2);
 	assert(repo.getLenR() == 2);
+	assert(p1.compare(repo.getAllR()[0]) == true);
+	assert(p2.compare(repo.getAllR()[1]) == true);
 
 	cout << "Repository tests passed" << endl;
 }
