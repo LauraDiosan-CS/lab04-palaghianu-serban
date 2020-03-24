@@ -38,6 +38,14 @@ int Repository::delProjectR(Project& p)
 		return 0;
 }
 
+int Repository::updateProjectR(int i, Project& newP)
+{
+		this->getAllR()[i].setGitPath(newP.getGitPath());
+		this->getAllR()[i].setNoBranches(newP.getNoBranches());
+		this->getAllR()[i].setNoCommits(newP.getNoCommits());
+		return 1;
+}
+
 int Repository::verifDuplicat(Project& p)
 {
 	//verifies if the new project exists in the list already

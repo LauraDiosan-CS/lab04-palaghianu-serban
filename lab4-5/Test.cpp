@@ -4,6 +4,7 @@
 #include "assert.h"
 #include <iostream>
 #include <string.h>
+#include "Service.h"
 using namespace std;
 
 void test()
@@ -39,6 +40,20 @@ void testRepo()
 	assert(repo.getLenR() == 2);
 	assert(p1.compare(repo.getAllR()[0]) == true);
 	assert(p2.compare(repo.getAllR()[1]) == true);
-
+	assert(repo.getLenR() == 2);
 	cout << "Repository tests passed" << endl;
+}
+
+void testService()
+{
+	Repository repo;
+	Service serv{ &repo };
+	Project p2 = Project("qqeqehvbf", 5, 3);
+	Project p1 = Project("C/repo/source", 10, 6);
+	assert(serv.addProjectC(p1) == 1);
+	assert(serv.addProjectC(p2) == 1);
+	assert(serv.updateProjectC(0, p2) == 1);
+	assert(serv.getLenC() == 2);
+
+	cout << "Service tests passed" << endl;
 }

@@ -13,7 +13,7 @@ public:
 	Project();
 	Project(const char* gitPath, int noBranches, int noCommits);
 	Project(const Project &p);
-	//~Project();
+	~Project();
 
 	char* getGitPath();
 	void setGitPath(const char* gitPathN);

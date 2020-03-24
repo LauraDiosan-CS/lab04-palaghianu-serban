@@ -10,9 +10,11 @@ private:
 	Project projects[100];
 public:
 	Repository() {};
+	~Repository() {};
 	int addProjectR(Project& p);
 	int delProjectR(Project& p);
 	int verifDuplicat(Project& p);
+	int updateProjectR(int i, Project& newP);
 	Project* getAllR();
 	int getLenR();
 };

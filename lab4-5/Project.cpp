@@ -32,6 +32,14 @@ Project::Project(const Project &p)
 	this->noBranches = p.noBranches;
 	this->noCommits = p.noCommits;
 }
+
+Project::~Project() {
+	if (this->gitPath) {
+		delete[] this->gitPath;
+		this->gitPath = NULL;
+	}
+}
+
 char* Project::getGitPath()
 {
 	//out: returns GitPath
@@ -43,6 +51,9 @@ void Project::setGitPath(const char* gitPathN)
 	//setter GitPath
 	//in: gitPathN (new value)
 	//out: -
+	if (this->gitPath) {
+		delete[] this->gitPath;
+	}
 	this->gitPath = new char[strlen(gitPathN) + 1];
 	strcpy_s(this->gitPath, strlen(gitPathN) + 1, gitPathN);
 }

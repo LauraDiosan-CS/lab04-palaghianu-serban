@@ -117,12 +117,14 @@
   <ItemGroup>
     <ClInclude Include="Project.h" />
     <ClInclude Include="Repository.h" />
+    <ClInclude Include="Service.h" />
     <ClInclude Include="Test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Project.cpp" />
     <ClCompile Include="Repository.cpp" />
+    <ClCompile Include="Service.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
