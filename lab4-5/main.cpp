@@ -19,13 +19,17 @@ int main()
 	Project p2 = Project("6rffhfjhf", 3, 7);
 	serv.addProjectC(p1);
 	serv.addProjectC(p2);
-	cout << p1.toString() << endl;
-	cout << p2.toString() << endl;
 	serv.readProjectsC();
+	cout << endl;
 	serv.updateProjectC(0, p2);
 	serv.readProjectsC();
-	//serv.delProjectC(p2.getGitPath());
+	cout << endl;
+	serv.addProjectC(p1);
 	serv.readProjectsC();
+	cout << endl;
+	serv.delProjectC("blabla/land");
+	serv.readProjectsC();
+	cout << endl;
 	system("pause");
 	return 0;
 }

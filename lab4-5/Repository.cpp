@@ -27,7 +27,7 @@ int Repository::delProjectR(Project& p)
 	int poz = verifDuplicat(p);
 	if (poz != -1)
 	{
-		for (int i = poz; i <= this->length - 1; i++)
+		for (int i = poz; i <= this->length - 2; i++)
 		{
 			this->projects[i] = this->projects[i + 1];
 		}
