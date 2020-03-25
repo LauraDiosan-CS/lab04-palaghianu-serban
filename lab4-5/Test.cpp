@@ -46,6 +46,7 @@ void testRepo()
 
 void testService()
 {
+	//tests for the Service class
 	Repository repo;
 	Service serv{ &repo };
 	Project p2 = Project("qqeqehvbf", 5, 3);
