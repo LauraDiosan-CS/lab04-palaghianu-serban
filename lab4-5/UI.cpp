@@ -24,6 +24,8 @@ void UI::printMenu()
 	cout << "19. Display the max noCommits and the projects that have them: " << endl;
 	cout << "20. Display the min noBranches and the projects that have them: " << endl;
 	cout << "21. Display the min noCommits and the projects that have them: " << endl;
+	cout << "22. Filter the projects that have a minimum noBranches and noCommits" << endl;
+	cout << "23. Delete the projects that have noBranches X noCommits = 0: " << endl;
 	cout << "0. Exit" << endl;
 }
 
@@ -36,6 +38,7 @@ void UI::run()
 	int n;
 	int max, min;
 	int i;
+	int k, l;
 	serv.addProjectC("blabla/land", 5, 8);
 	serv.addProjectC("lala/band", 7, 313);
 	serv.addProjectC("fwfw", 8, 11);
@@ -191,6 +194,17 @@ void UI::run()
 			for (i = 0; i < serv.getLenC(); i++)
 				if (serv.getAllC()[i].getNoCommits() == min)
 					cout << serv.getAllC()[i].toString() << endl;
+			break;
+		case 22:
+			cout << "Type the noBranches to filter by: " << endl;
+			cin >> k;
+			cout << "Type the noCommits to filter by: " << endl;
+			cin >> l;
+			cout << "List of projects in this interval of noBranches: " << serv.filternoBranchesNoCommits(k, l) << endl;
+			cout << endl;
+			break;
+		case 23:
+			serv.delProjectNoBranchesXNoCommits();
 			break;
 		}
 	}

@@ -67,13 +67,16 @@ void testService()
 	serv.addProjectC("vreausatrec", 64, 100);
 	serv.addProjectC("mypcdatcom", 32, 451);
 
-	assert(serv.filterGitPathC("mypcdatcom") == 1);
-	assert(serv.filterNoCommitsC(100) == 1);
-	assert(serv.filterGreaterNoBranchesC(60) == 1);
-	assert(serv.filterIntervalNoCommitsC(10,16) == 2);
+	//assert(serv.filterGitPathC("mypcdatcom") == 1);
+	//assert(serv.filterNoCommitsC(100) == 1);
+	//assert(serv.filterGreaterNoBranchesC(60) == 1);
+	//assert(serv.filterIntervalNoCommitsC(10,16) == 2);
 	assert(serv.maxNoBranchesC() == 64);
 	assert(serv.minNoCommitsC() == 11);
 	assert(serv.sumNoBranchesC() == 124);
 	assert(serv.sumNoCommitsC() == 582);
+	assert(serv.filternoBranchesNoCommits(60, 2) == 1);
+	serv.delProjectNoBranchesXNoCommits();
+
 	cout << "Service tests passed" << endl;
 }

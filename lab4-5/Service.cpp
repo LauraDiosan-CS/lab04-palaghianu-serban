@@ -394,3 +394,41 @@ void Service::readProjectsC()
 	for (int i = 0; i < this->repo.getLenR(); i++)
 		cout << this->repo.getAllR()[i].toString() << endl;
 }
+
+int Service::delProjectNoBranchesXNoCommits()
+{
+	//uses the function delProjectR from Repository  to delete the elements that have the same gitPaths that is in the parameter, from the list
+	//in: gitPath - type const char*
+	//out: 1 if the delete was made, 0 instead
+	int ok = 0;
+	Project *projects = this->repo.getAllR();
+	int len = this->repo.getLenR();
+	for (int i = 0; i < len; i++)
+		if (projects[i].getNoBranches() * projects[i].getNoCommits() == 0 )
+		{
+			this->repo.delProjectR(projects[i].getGitPath(), projects[i].getNoBranches(), projects[i].getNoCommits());
+			ok = 1;
+		}
+	if (ok == 0)
+		return 0;
+	return 1;
+}
+
+int Service::filternoBranchesNoCommits(int k, int l)
+{
+	//displays all projects that have the noCommits lower than the one in parameter
+	//in: noCommits - type const int
+	//out: returns the number of projects that have that property
+	Project *projects = this->repo.getAllR();
+	int len = this->repo.getLenR();
+	int nr = 0;
+	for (int i = 0; i < len; i++)
+	{
+		if (projects[i].getNoBranches() >=  k && projects[i].getNoCommits() >= l)
+		{
+			nr++;
+			cout << projects[i].toString() << endl;
+		}
+	}
+	return nr;
+}

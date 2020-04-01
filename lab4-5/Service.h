@@ -22,6 +22,7 @@ public:
 	int delProjectGitPathC(const char* path);
 	int delProjectNoBranchesC(const int noBranches);
 	int delProjectNoCommitsC(const int noCommits);
+	int delProjectNoBranchesXNoCommits();
 
 	int filterGitPathC(const char* gitPath);
 	int filterNoBranchesC(const int noBranches);
@@ -32,6 +33,7 @@ public:
 	int filterGreaterNoCommitsC(const int noCommits);
 	int filterLowerNoBranchesC(const int noBranches);
 	int filterLowerNoCommitsC(const int noCommits);
+	int filternoBranchesNoCommits(int k , int l);
 
 	int sumNoCommitsC();
 	int sumNoBranchesC();
