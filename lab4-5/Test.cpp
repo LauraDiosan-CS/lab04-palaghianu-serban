@@ -35,12 +35,10 @@ void testRepo()
 	Repository repo;
 	Project p2 = Project("qqeqehvbf", 5, 3);
 	Project p1 = Project("C/repo/source", 10, 6);
-	repo.addProjectR(p1);
-	repo.addProjectR(p2);
+	repo.addProjectR("qqeqehvbf", 5, 3);
+	repo.addProjectR("C/repo/source", 10, 6);
 	assert(repo.getLenR() == 2);
-	assert(p1.compare(repo.getAllR()[0]) == true);
-	assert(p2.compare(repo.getAllR()[1]) == true);
-	assert(repo.getLenR() == 2);
+
 	cout << "Repository tests passed" << endl;
 }
 
@@ -48,19 +46,34 @@ void testService()
 {
 	//tests for the Service class
 	Repository repo;
-	Service serv{ &repo };
-	Project p2 = Project("qqeqehvbf", 5, 3);
-	Project p1 = Project("C/repo/source", 10, 6);
-	serv.addProjectC(p1);
-	serv.addProjectC(p2);
-	assert(serv.getLenC() == 2);
-	assert(p1.compare(serv.getAllC()[0]) == true);
-	assert(p2.compare(serv.getAllC()[1]) == true);
-	assert(serv.updateProjectC(0, p2) == 1);
-	serv.updateProjectC(0, p2);
-	assert(serv.delProjectC("qqeqehvbf") == 1);
-	serv.delProjectC("qqeqehvbf");
-	assert(serv.getLenC() == 0);
+	Service serv;
+	Project p2 = Project("blabla", 5, 3);
+	Project p1 = Project("mama", 10, 6);
+	serv.addProjectC("mypc/datcom", 5, 3);
+	serv.addProjectC("sooper", 11, 6);
+	serv.addProjectC("blabla/land", 15, 20);
+	serv.addProjectC("yeeeey", 10, 8);
+	assert(serv.addProjectC("mypc/datcom", 5, 3) == 1);
+	assert(serv.addProjectC("sooper", 11, 6) == 1);
+	assert(serv.updateProjectC(0, "supamida", 13, 11) == 1);
+	assert(serv.getLenC() == 4);
+	assert(p2.compare(serv.getAllC()[0]) == false);
+	assert(p1.compare(serv.getAllC()[1]) == false);
+	serv.delProjectGitPathC("sooper");
+	assert(serv.getLenC() == 3);
 
+	serv.delProjectNoBranchesC(10);
+	assert(serv.getLenC() == 2);
+	serv.addProjectC("vreausatrec", 64, 100);
+	serv.addProjectC("mypcdatcom", 32, 451);
+
+	assert(serv.filterGitPathC("mypcdatcom") == 1);
+	assert(serv.filterNoCommitsC(100) == 1);
+	assert(serv.filterGreaterNoBranchesC(60) == 1);
+	assert(serv.filterIntervalNoCommitsC(10,16) == 2);
+	assert(serv.maxNoBranchesC() == 64);
+	assert(serv.minNoCommitsC() == 11);
+	assert(serv.sumNoBranchesC() == 124);
+	assert(serv.sumNoCommitsC() == 582);
 	cout << "Service tests passed" << endl;
 }

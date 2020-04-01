@@ -6,15 +6,19 @@ using namespace std;
 class Repository
 {
 private:
-	int length = 0;
-	Project projects[100];
+	int length;
+	Project* projects;
 public:
-	Repository() {};
-	~Repository() {};
-	int addProjectR(Project& p);
-	int delProjectR(Project& p);
-	int verifDuplicat(Project& p);
-	int updateProjectR(int i, Project& newP);
+	Repository();
+	~Repository();
+
+	int addProjectR(const char* gitPathN, const int noBranchesN, const int noCommitsN);
+	int delProjectR(const char* gitPathN, const int noBranchesN, const int noCommitsN);
+	int verifDuplicat(const char* gitPathN, const int noBranchesN, const int noCommitsN);
+	int updateProjectR(int i, const char* gitPathN, const int noBranchesN, const int noCommitsN);
+
+	void setAll(Project* p, int l);
+
 	Project* getAllR();
 	int getLenR();
 };
